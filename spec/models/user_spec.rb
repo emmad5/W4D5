@@ -33,4 +33,5 @@ RSpec.describe User, type: :model do
       expect(User.find_by_credentials(user.email, "123675")).to eq(nil)
     end
   end
+
 end
