@@ -22,6 +22,15 @@ RSpec.describe User, type: :model do
     it { should validate_length_of(:password).is_at_least(6) }
     it { should validate_uniqueness_of(:email) }
     it { should validate_uniqueness_of(:session_token) }
+  end
+  
+  describe "User::find_by_credentials" do
+    it "should return user if given correct credentials" do
+      expect(User.find_by_credentials(user.email, user.password)).to eq(user)
+    end
     
+    it "should return nil if given incorrect credentials" do
+      expect(User.find_by_credentials(user.email, "123675")).to eq(nil)
+    end
   end
 end
