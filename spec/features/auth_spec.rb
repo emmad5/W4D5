@@ -49,7 +49,8 @@ feature 'logging out' do
   
   scenario 'begins with a logged out state' do
     click_button 'Log out'  
-    expect(session[:session_token]).not_to eq(user.session_token)
+    # expect(session[:session_token]).not_to eq(user.session_token)
+    expect(page).not_to have_content(user.email)
   end
   
 
